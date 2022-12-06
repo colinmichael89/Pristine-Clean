@@ -73,11 +73,28 @@ export const QUERY_LOCATIONS = gql`
       _id
       businessName
       address
-      days
+      businessContact
+      shifts
+      daysOfWeek
+      startTime
       laborHours
-      instructions
-      manager
-      cleaners
+      instructions {
+        facilityType
+        cleaningType
+        bathrooms
+        lobby
+        sittingArea
+        breakRoom
+        frontdesk
+        appliances
+        dusting
+        windows
+        trash
+        vacuum
+        mop
+        additionalServices
+        exclusions
+      }
     }
   }
 `;
@@ -123,6 +140,22 @@ export const QUERY_USERS = gql`
         sundayAm
         sundayPm
       }
+    }
+  }
+`;
+
+export const QUERY_EVENTS = gql`
+  query events {
+    events {
+      _id
+      title
+      startTime
+      endTime
+      daysOfWeek
+      startRecur
+      display
+      backgroundColor
+      textColor
     }
   }
 `;

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Location, Incident } = require("../models");
+const { User, Location, Incident, Event } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -10,7 +10,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    user: async (parent, { userId }) => {
+    user: async (parent, { userId }, context) => {
       if (context.user) {
         return User.findOne({ _id: userId });
       }
@@ -24,14 +24,14 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    locations: async () => {
+    locations: async (parent, args, context) => {
       if (context.user) {
         return Location.find().sort({ createdAt: -1 });
       }
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    location: async (parent, { locationId }) => {
+    location: async (parent, { locationId }, context) => {
       if (context.user) {
         return Location.findOne({ _id: locationId });
       }
@@ -44,16 +44,22 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    events: async (parent, args, context) => {
+      if (context.user) {
+        return Event.find();
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
+    addUser: async (parent, { username, email, password }, context) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
 
-    deleteUser: async (parent, { _id }) => {
+    deleteUser: async (parent, { _id }, context) => {
       if (context.user) {
         return User.findOneAndDelete({ _id });
       }
@@ -69,7 +75,8 @@ const resolvers = {
         subject,
         urgent,
         incidentDetails,
-      }
+      },
+      context
     ) => {
       if (context.user) {
         return Incident.create({
@@ -84,7 +91,7 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    deleteIncident: async (parent, { _id }) => {
+    deleteIncident: async (parent, { _id }, context) => {
       if (context.user) {
         return Incident.findOneAndDelete({ _id });
       }
@@ -131,28 +138,28 @@ const resolvers = {
       context
     ) => {
       if (context.user) {
-      return User.findOneAndUpdate(
-        { _id },
-        {
-          availability: {
-            mondayAm,
-            mondayPm,
-            tuesdayAm,
-            tuesdayPm,
-            wednesdayAm,
-            wednesdayPm,
-            thursdayAm,
-            thursdayPm,
-            fridayAm,
-            fridayPm,
-            saturdayAm,
-            saturdayPm,
-            sundayAm,
-            sundayPm,
+        return User.findOneAndUpdate(
+          { _id },
+          {
+            availability: {
+              mondayAm,
+              mondayPm,
+              tuesdayAm,
+              tuesdayPm,
+              wednesdayAm,
+              wednesdayPm,
+              thursdayAm,
+              thursdayPm,
+              fridayAm,
+              fridayPm,
+              saturdayAm,
+              saturdayPm,
+              sundayAm,
+              sundayPm,
+            },
           },
-        },
-        { new: true }
-      );
+          { new: true }
+        );
       }
       throw new AuthenticationError("You need to be logged in!");
     },
