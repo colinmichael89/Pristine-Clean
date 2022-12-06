@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/calendar.css";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -109,7 +109,7 @@ const FullCalendarApp = () => {
             month: "Month",
             list: "Week",
           }}
-          titleFormat="MMM-YYYY"
+          titleFormat="MMM-YY"
           listDayFormat={{
             day: "numeric",
             weekday: "short",
