@@ -37,7 +37,7 @@ const AppNavbar = () => {
                 <>
                   <Nav.Link
                     as={Link}
-                    to="/dashboard"
+                    to="/calendar"
                     eventKey="4"
                     className="text-white"
                   >
@@ -49,7 +49,7 @@ const AppNavbar = () => {
                     menuvariant="dark"
                   >
                     <NavDropdown.Item
-                      reloadDocument
+                      // reloadDocument
                       as={Link}
                       to="/availability"
                       eventKey="5"
