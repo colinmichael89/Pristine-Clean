@@ -21,7 +21,7 @@ AS the owner of a commercial cleaning business
 I WANT employees to be able to log in to an application that gives them all of the tools and information necessary to the requirements of their position.
 
 SO THAT manage the business through a single page application
-````
+```
 
 ## Usage
 
@@ -33,18 +33,18 @@ The following features exist:
 
 1. This application is a single page application built using the MERN stack. When employees first navigate to the page they see a log in box with a (1) message tab (2) login tab and (3) a sign up tab. On the message tab there is a link to the company website, a list of available shifts and the shift information, as well as a QR code that can be scanned to navigate to the application page.
 2. When employees log in they are taken to their own custom dashboard. On their dashboard they can view (1) their schedule on an interactive calendar (2) locations that they have shifts at (3) and an employees tab.
-3, The calendar is interactive and can viewed by either month or day. When an employee clicks on an event in the calendar they are taken to the locations information page.
-4. To view location information employees can either click the job in their interactive calendar, or go click on the locations tab. Here they will find all of the locations details including the locations manager, address, contact information, how often the facility is cleaned, and detailed instructions. If employees click the Get Directions button at the bottom of the locations page they will be given directions from their current location to that facility. The directions can be changed based on user input and can be opened up in google maps.
-5. On the employees tab is a list of all employees and their contact information. There is also a collapsable View Availabilty tab that lists that employees current availability when clicked.
-6. In the navigation bar when an employee is signed in they will see (1) Dashboard (2) Forms (3) and Logout tabs.
-7. The forms tab that includes (1) Availability (2) Request Time Off (3) Incident Report
-8. When the employeee clicks on availability they are taken to an interactive availabilty form where they can view there current availability and update it if necessary.
-9. When the employee clicks the Request Time Off form, they are taken to a form that can be filled out and is emailed directly to management.
-10. When the emplpoyee clicks the Incident Report form, they are taken to a for, that can also be filled out and is emailed directly to management. This form has an Urgent/Not Urgent box that will populate the subject line to help management know the importance of the incident.
-11. Managers dashboards are similar to employees with additional functionality.
-12. In the employees tab, managers have the ability to delete employees.
-13. In the locations tab, managers will see all locations rather than just the ones that they have shifts at.
-14. Can be installed as a PWA.
+   3, The calendar is interactive and can viewed by either month or day. When an employee clicks on an event in the calendar they are taken to the locations information page.
+3. To view location information employees can either click the job in their interactive calendar, or go click on the locations tab. Here they will find all of the locations details including the locations manager, address, contact information, how often the facility is cleaned, and detailed instructions. If employees click the Get Directions button at the bottom of the locations page they will be given directions from their current location to that facility. The directions can be changed based on user input and can be opened up in google maps.
+4. On the employees tab is a list of all employees and their contact information. There is also a collapsable View Availabilty tab that lists that employees current availability when clicked.
+5. In the navigation bar when an employee is signed in they will see (1) Dashboard (2) Forms (3) and Logout tabs.
+6. The forms tab that includes (1) Availability (2) Request Time Off (3) Incident Report
+7. When the employeee clicks on availability they are taken to an interactive availabilty form where they can view there current availability and update it if necessary.
+8. When the employee clicks the Request Time Off form, they are taken to a form that can be filled out and is emailed directly to management.
+9. When the emplpoyee clicks the Incident Report form, they are taken to a for, that can also be filled out and is emailed directly to management. This form has an Urgent/Not Urgent box that will populate the subject line to help management know the importance of the incident.
+10. Managers dashboards are similar to employees with additional functionality.
+11. In the employees tab, managers have the ability to delete employees.
+12. In the locations tab, managers will see all locations rather than just the ones that they have shifts at.
+13. Can be installed as a PWA.
 
 ## Future Enhancements:
 
@@ -98,36 +98,40 @@ No tests at this time.
 
 ## Installation
 
-Setup: 
+Setup:
+
 - (1) Fork the repo, (2) Clone the forked repo locally, (3) Run "npm install" (to install the dependencies).
 
-Setup the Database Schema: 
+Setup the Database Schema:
+
 - (1) Update or add an .env file. Include the fields below in the .env file. Note that the .env variables are used in the conf folder, connection.js file.
 
   Server-Side '.env`:
-  * DB_NAME=pristine-clean
+
+  - DB_NAME=pristine-clean
 
   Client-Side `.env`:
-  * REACT_APP_GOOGLE_MAPS_API_KEY=<key>
-  * REACT_APP_TINY_URL_KEY=<key>
 
-Seed the Database: 
+  - REACT_APP_GOOGLE_MAPS_API_KEY=<key>
+  - REACT_APP_TINY_URL_KEY=<key>
+
+Seed the Database:
+
 - Run Server: From the root directory, run either "npm run watch" to start nodemon or "node server.js".
 - Seed Database: (a) To create the database, run "SOURCE ./db/schema.sql" in mySQL, (b) To create the database tables, from the terminal, run "npm run start" or "npm run watch", (c) To seed the database tables, run "npm run seed" or "node ./seeds/index.js".
 
-Note that the seed will also create entries for the user table including hashed passwords. When loggin into the app these user seeds can be used as test email address. Either obtain an email address from the user table (SELECT * FROM user;) or use an option noted below:
+Note that the seed will also create entries for the user table including hashed passwords. When loggin into the app these user seeds can be used as test email address. Either obtain an email address from the user table (SELECT \* FROM user;) or use an option noted below:
 
-  * email: a@a.com, password: "12" (note role is employee)
-  * email: b@b.com, password: "12" (note role is manager)
+- email: a@a.com, password: "12" (note role is employee)
+- email: b@b.com, password: "12" (note role is manager)
 
-If you'd like to use NPM nodemon as/if you make changes to the code, please install nodemon as a development dependency using "npm install --save-dev nodemon" (see https://www.npmjs.com/package//nodemon). 
+If you'd like to use NPM nodemon as/if you make changes to the code, please install nodemon as a development dependency using "npm install --save-dev nodemon" (see https://www.npmjs.com/package//nodemon).
 
 ## Contributing
 
 Contributor Covenant Code of Conduct
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md)
-
 
 ## Collaborators
 
@@ -139,7 +143,7 @@ Contributor Covenant Code of Conduct
 ## Resources
 
 1. GitHub Repo: <https://github.com/stevecalla/pristine-clean-v2>
-3. Heroku Deploy: <https://pristine-clean.herokuapp.com/ >
+2. Heroku Deploy: <https://pristine-clean.herokuapp.com/ >
 
 ## License
 
